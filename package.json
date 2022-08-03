@@ -1,0 +1,19 @@
+{
+  "name": "ohmyfood",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --watch ./sass/main.scss:./CSS/styles.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IvyWF/P3-Ohmyfood.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IvyWF/P3-Ohmyfood/issues"
+  },
+  "homepage": "https://github.com/IvyWF/P3-Ohmyfood#readme"
+}
