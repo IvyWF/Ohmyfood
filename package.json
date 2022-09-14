@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "sass": "sass --watch ./sass/main.scss:./CSS/styles.css"
+    "sass": "sass --watch ./sass/main.scss:./CSS/styles.css",
+    "prefix": "postcss ./CSS/styles.css --use autoprefixer -d ./CSS/prefixed/"
   },
   "repository": {
     "type": "git",
@@ -12,6 +13,7 @@
   },
   "author": "",
   "license": "ISC",
+  "browserslist": "last 4 versions",
   "bugs": {
     "url": "https://github.com/IvyWF/P3-Ohmyfood/issues"
   },
