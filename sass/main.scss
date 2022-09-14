@@ -13,7 +13,57 @@
     font-style: normal;
 }
 
+$lightgrey: #ededed;
+
 body {
     margin: auto;
+    width: 100%;
 }
+
+.header__logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: 15%;
+}
+
+.localisation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #e0e0e0;
+    box-shadow: inset 0px 1.5px 0px 0px #bfbcbc;
+}
+
+.fa-map-marker-alt {
+    border: none;
+    background-color: #e0e0e0;
+    color: #e0e0e0;
+}
+
+form input {
+    background-color: #e0e0e0;
+    border: 0;
+    box-shadow: inset 0px 1.5px 0px 0px #bfbcbc;
+    color: #bfbcbc;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.découvert {
+    text-align: center;
+    background-color: $lightgrey;
+
+    & h1 {
+        margin-block-start: 0em;
+        padding-top: 35px;
+    }
+
+    & button {
+        margin-bottom: 25px;
+    }
+}
+
 
