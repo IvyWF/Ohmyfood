@@ -1,0 +1,432 @@
+$lightgrey: #f7f5f5;
+$darkergrey: #e2e2e2;
+$colorprimary: #9356DC;
+$colorsecondary: #FF79DA;
+$colortertiary: #99E2D0;
+$colorfooter: #2a2a2a;
+$choice-shadow: 5px 5px 6px $darkergrey;
+$button-shadow: 9px 9px 13px #A7A7A7;
+
+// responsive
+$breakpoints: (
+    mobile: 768px,
+    tablet: 992px
+);
+
+@mixin mobile-only {
+    @media screen and (max-width: map-get($breakpoints, mobile)) {
+        @content;
+    }
+}
+
+@mixin tablet-only {
+    @media screen and (min-width: 769px) and (max-width: map-get($breakpoints, tablet)) {
+        @content;
+    }
+}
+
+// Animations
+$smooth-choice-transition: all 300ms ease-out; 
+/*j'ai essayé d'ajouter 'forwards' pour animation après 'ease-out', mais rien n'a changé, j'ai l'impression. 
+Par contre, les transitions de 'add-btn' et de 'Price' semblent être maintenue après la clique de la souris - Version PC et Mobile. 
+Pourtant la transition de 'Price' pour la version Tablette ne marche pas comme je veux, j'ai testé beaucoup de choses, 
+mais le problème est toujours là.*/
+$delay-between-choice: 200ms;
+
+@keyframes fadeIn {
+    0% {
+        transform: translateY(30%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+}
+
+
+body {
+    margin: auto;
+    width: 100%;
+    font-family: 'Roboto', sans-serif, Arial, Helvetica;
+
+    @include mobile-only {
+        min-width: 379px;
+    }
+}
+
+.menu-main {
+    margin-bottom: -129px;
+
+    @include mobile-only {
+        margin-bottom: -45px;
+    }
+}
+
+.menu-header {
+    display: flex;
+    align-items: center;
+
+    & .fa-arrow-left {
+        font-size: 20px;
+        padding-left: 30px;
+        color: black;
+    }
+
+    &__logo {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    
+        @include mobile-only {
+            width: 44%;
+            height: auto;
+            margin-left: 57px;
+        }
+    }
+}
+
+.top-image {
+    & img {
+        width: 100%;
+    }
+}
+
+.menu {
+    background-color: $lightgrey;
+    border-radius: 25px 25px 0 0;
+    position: relative;
+    top: -130px;
+    padding: 12px 13px 50px 13px;
+
+    @include mobile-only {
+        top: -45px;
+        padding: 12px 13px 61px 13px;
+    }
+
+    &__heading {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        @include mobile-only {
+            justify-content: flex-start;
+        }
+
+        & h1 {
+            font-family: 'Shrikhand', cursive;
+            font-size: 45px;
+
+            @include mobile-only {
+                font-size: 26px;
+            }
+        }
+
+        & .fa-heart {
+            position: relative;
+            top: -2px;
+            left: 21px;
+            font-size: 39px;
+
+            @include mobile-only {
+                font-size: 26px;
+                left: 125px;
+            }
+        }
+    }
+
+    &__lists {
+        display: flex;
+        justify-content: space-evenly;
+
+        @include tablet-only {
+            flex-direction: column;
+            row-gap: 1em;
+        }
+
+        @include mobile-only {
+            flex-direction: column;
+            row-gap: 1em;
+        }
+
+        &--choice {
+            background-color: white;
+            border-radius: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding: 0px 23px 0px 10px;
+            column-gap: 3.1em;
+            margin-bottom: 10px;
+            box-shadow: $choice-shadow;
+            cursor: pointer;
+            overflow: hidden;
+            position: relative;
+            animation: fadeIn 900ms ease-in-out both;
+
+            &--1 {
+                animation-delay: $delay-between-choice;
+            }
+            
+            &--2 {
+                animation-delay: $delay-between-choice*2;
+            }
+
+            &--3 {
+                animation-delay: $delay-between-choice*4;
+            }
+            
+            &:hover {
+                & .choice__add-btn {
+                    transform: translate(0%);
+
+                    & i {
+                        transform: rotate(0deg);
+                    }
+                }
+
+                & .choice-name {
+                    width: 55%;
+                }
+             
+                & .choice-price {
+                    transform: translate(-250%);
+                }
+            }
+
+            @include mobile-only {
+                column-gap: 0;
+                margin-bottom: 15px;
+            }
+
+            @include tablet-only {
+                &:active {
+                    & .choice__add-btn {
+                        transform: translate(0%);
+    
+                        & i {
+                            transform: rotate(0deg);
+                        }
+                    }
+    
+                    & .choice-name {
+                        width: 55%;
+                    }
+                 
+                    & .choice-price {
+                        transform: translate(-250%); 
+                        /*J'ai pas réussi à régler ce problème ! Le prix glisse vers la droite si je relache la souris.
+                        Il semble qu'il s'agit du problème de 'maintenir la transition après la clique de la souris, c'est ce que 
+                        j'ai pas trouvé comme solution.*/
+                    }
+                }
+            }
+
+            @include mobile-only {
+                &:active {
+                    & .choice__add-btn {
+                        transform: translate(0%);
+    
+                        & i {
+                            transform: rotate(0deg);
+                        }
+                    }
+    
+                    & .choice-name {
+                        width: 55%;
+                    }
+                 
+                    & .choice-price {
+                        transform: translate(-250%);
+                    }
+                }
+            }
+
+            & .choice-name {
+                display: inline-block;
+                white-space: nowrap;
+                transition: $smooth-choice-transition;
+
+                &__title {
+                    margin-bottom: 0;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+    
+                    @include tablet-only {
+                        font-size: 27px;
+                    }
+                }
+
+                &__accompagnement {
+                    font-weight: 300;
+                    margin-top: 7px;
+                    font-size: 15.2px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+    
+                    @include tablet-only {
+                        font-size: 22px;
+                    }
+                }
+
+            }
+
+            & .choice-price {
+                font-weight: 900;
+                font-size: 16px;
+                transform: translate(0);
+                transition: $smooth-choice-transition;
+                /*transition-delay: 30ms;*/
+
+                @include tablet-only {
+                    font-size: 22px;
+                }
+                
+            }
+
+            & .choice__add-btn {
+                min-width: 20%;
+                height: 100%;
+                background-color: $colortertiary;
+                font-size: 22px;
+                color: white;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position:absolute;
+                top:0px;
+                right:0px;
+                transform: translate(100%);
+                transition: $smooth-choice-transition;
+
+                & i {
+                    transform: rotate(-360deg);
+                    transition: $smooth-choice-transition;
+                }
+            }
+
+        }
+
+        & h2 {
+            font-weight: 300;
+
+            @include tablet-only {
+                font-size: 24px;
+            }
+
+            @include mobile-only {
+                font-size: 17px;
+            }
+        }
+
+        & .underline {
+            width: 17%;
+            border-bottom: 3px solid $colortertiary;
+            padding-bottom: 7px;
+
+            @include tablet-only {
+                width: 8%;
+            }
+
+            @include mobile-only {
+                width: 12%;
+            }
+        }
+    }
+
+    & button {
+        margin-bottom: 35px;
+        border: none;
+        border-radius: 35px;
+        box-shadow: $choice-shadow;
+        background: linear-gradient(to bottom, $colorsecondary, $colorprimary);
+        padding: 15px 52px;
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 43px;
+
+        &:active {
+            filter: brightness(1.2);
+            box-shadow: $button-shadow;
+        }
+
+        @include mobile-only {
+            margin-top: 37px;
+            font-size: 17px;
+        }
+    }
+}
+
+.menu-footer {
+    background-color: $colorfooter;
+    padding-left: 35px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    color: #ffffff;
+    font-size: 14px;
+
+    @include mobile-only {
+        padding-bottom: 25px;
+        padding-top: 15px;
+    }
+
+    @include tablet-only {
+        background-color: $colorfooter;
+        padding-left: 35px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        color: #ffffff;
+    }
+
+    &__heading {
+        font-family: 'Shrikhand', cursive;
+
+        @include mobile-only {
+            font-size: 20px;
+            padding-bottom: 7px;
+        }
+    }
+
+    & p {
+        font-weight: 300;
+        font-size: 26px;
+        
+        @include mobile-only {
+            font-size: 17px;
+        }
+    }
+
+    & i {
+        margin-right: 10px;
+        font-size: 24px;
+        
+        @include mobile-only {
+            font-size: 21px;
+        }
+    }
+
+    & .fa-utensils {
+        margin-right: 10px;
+        font-size: 24px;
+    
+        @include mobile-only {
+            font-size: 17px;
+        }
+    }
+
+    & .fa-handshake-angle {
+        margin-right: 7px;
+        font-size: 20px;
+    
+        @include mobile-only {
+            font-size: 14px;
+        }
+    }
+}

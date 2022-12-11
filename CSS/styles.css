@@ -1,6 +1,40 @@
 @charset "UTF-8";
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&family=Shrikhand&display=swap");
-/*font-family: 'Roboto', sans-serif; font-family: 'Shrikhand', cursive;*/
+@import url("https://fonts.googleapis.com/css2?family=Shrikhand&display=swap");
+/*font-family: 'Shrikhand', cursive;*/
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
+/*font-family: 'Roboto', sans-serif;*/
+@keyframes loading {
+  from {
+    transform: rotate(0turn);
+  }
+  to {
+    transform: rotate(1turn);
+  }
+}
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #fff;
+  z-index: 1;
+}
+.loader::after {
+  content: "";
+  width: 75px;
+  height: 75px;
+  border: 15px solid #f7f5f5;
+  border-top-color: #9356DC;
+  border-radius: 50%;
+  animation: loading 1.5s ease infinite;
+}
+
 body {
   margin: auto;
   width: 100%;
@@ -105,6 +139,10 @@ form input::-webkit-input-placeholder {
   font-size: 18px;
   cursor: pointer;
 }
+.découvert button:active {
+  filter: brightness(1.2);
+  box-shadow: 9px 9px 13px #A7A7A7;
+}
 @media screen and (max-width: 768px) {
   .découvert button {
     margin-bottom: 50px;
@@ -112,108 +150,43 @@ form input::-webkit-input-placeholder {
   }
 }
 
-/*.steps-section {
-    text-align: center;
-
-    @include mobile-only {
-        text-align: left;
-    }
-
-    &__heading {
-        font-size: 39px;
-        font-family: 'Roboto', sans-serif, Arial, Helvetica;
-        font-weight: 400;
-        margin-top: 50px;
-
-        @include mobile-only {
-            text-align: left;
-            font-size: 26px;
-            margin-left: 21px;
-        }
-    }
-
-    &__list{
-        display: flex;
-        justify-content: space-evenly;
-
-        /*@include mobile-only {
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            width: 100%;
-        }
-    }
-}
-
-ol {
-    list-style: none;
-    counter-reset: li;
-
-    @include mobile-only {
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: flex-start;
-        width: 100%;
-    }
-
-    & li {
-        counter-increment: li;
-        background: $lightgrey;
-        font-family: 'Roboto', sans-serif, Arial, Helvetica;
-        font-weight: 400;
-        box-shadow: 0.1111111111em 0.2222222222em 0.5555555556em rgb(0 0 0 / 15%);
-        border-radius: 5px;
-        padding-right: 75px;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        font-size: 20px;
-
-        &::before {
-            content: counter(li); 
-            color: white;
-            background-color: $colorprimary;
-            display: inline-block;
-            font-family: 'Roboto', sans-serif, Arial, Helvetica;
-            font-size: 15px;
-            font-weight: 400;
-            padding: 5px 10px;
-            border-radius: 100px;
-            position: relative;
-            right: 15px;
-        }
-    }
-
-    & i {
-        border: none;
-        background: $lightgrey;
-        color: $lightgrey;
-
-        @include mobile-only {
-            color: inherit;
-        }
-    }
-}*/
 .steps-section {
   padding-left: 1.1111111111em;
   padding-right: 1.1111111111em;
   padding-top: 2.7777777778em;
   padding-bottom: 1.1111111111em;
 }
+.steps-section__heading {
+  font-size: 39px;
+  text-align: center;
+  font-family: "Roboto", sans-serif, Arial, Helvetica;
+  font-weight: 400;
+  margin-top: 50px;
+}
+@media screen and (max-width: 768px) {
+  .steps-section__heading {
+    text-align: left;
+    font-size: 26px;
+    margin-left: 21px;
+  }
+}
 .steps-section__list {
   margin-top: 1.3888888889em;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  -moz-column-gap: 2.2222222222em;
   column-gap: 2.2222222222em;
-  /*@include mobile-only {
-      padding-left: 0;
-  }*/
+  padding-inline-start: 0px;
+}
+@media screen and (max-width: 768px) {
+  .steps-section__list {
+    max-width: none;
+  }
 }
 .steps-section__list--item {
   list-style: none;
   width: 100vw;
-  max-width: none;
+  max-width: 25em;
   box-shadow: 0.1111111111em 0.2222222222em 0.5555555556em rgba(0, 0, 0, 0.15);
   border-radius: 0.8333333333em;
   background-color: #F6F6F6;
@@ -223,6 +196,12 @@ ol {
   position: relative;
   transition: all 0.3s ease-out;
   margin-bottom: 1.6666666667em;
+  cursor: pointer;
+}
+@media screen and (max-width: 768px) {
+  .steps-section__list--item {
+    max-width: none;
+  }
 }
 .steps-section__list--item::after {
   content: attr(data-count);
@@ -256,70 +235,10 @@ ol {
   transition: all 0.3s ease-out;
 }
 
-/*.steps-section__list {
-    margin-top: 1.3888888889em;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    -moz-column-gap: 2.2222222222em;
-    column-gap: 2.2222222222em;
-  }
-
-  .steps-section__list--item {
-    list-style: none;
-    width: 100vw;
-    max-width: none;
-    box-shadow: 0.1111111111em 0.2222222222em 0.5555555556em rgba(0, 0, 0, 0.15);
-    border-radius: 0.8333333333em;
-    background-color: #F6F6F6;
-    padding: 1.6666666667em;
-    font-weight: bold;
-    margin-left: 0.8333333333em;
-    position: relative;
-    transition: all 0.3s ease-out;
-    margin-bottom: 1.6666666667em;
-  }*/
-@media screen and (min-width: 992px) {
-  .steps-section__list--item {
-    max-width: 25em;
-  }
-}
-/*.steps-section__list--item::after {
-  content: attr(data-count);
-  position: absolute;
-  background-color: #9356DC;
-  color: #ffffff;
-  font-weight: normal;
-  left: -0.8333333333em;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 1.6666666667em;
-  height: 1.6666666667em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-}
-.steps-section__list--item i {
-  color: hsl(0deg, 0%, 25%);
-  margin-right: 1.1111111111em;
-  opacity: 0.75;
-  width: 1.1111111111em;
-  transition: all 0.3s ease-out;
-}
-.steps-section__list--item:hover {
-  background-color: #F5EDFF;
-  transition: all 0.3s ease-out;
-}
-.steps-section__list--item:hover i {
-  color: #9356DC;
-  transition: all 0.3s ease-out;
-}*/
 .restaurants {
   font-family: "Roboto", sans-serif, Arial, Helvetica;
   background-color: #f7f5f5;
   margin-top: 50px;
-  margin-bottom: 50px;
 }
 .restaurants__heading {
   font-size: 39px;
@@ -343,7 +262,6 @@ ol {
 }
 @media screen and (max-width: 768px) {
   .restaurants__list-card {
-    max-width: 100%;
     column-count: 1;
   }
 }
@@ -366,7 +284,7 @@ ol {
 .new {
   float: right;
   position: relative;
-  bottom: 380px;
+  bottom: 500px;
   right: 15px;
   background-color: #99E2D0;
   border-radius: 5px;
@@ -384,11 +302,12 @@ ol {
 @media screen and (min-width: 769px) and (max-width: 992px) {
   .new {
     bottom: 210px;
+    font-size: 19px;
   }
 }
 
 .restaurants__list-card .card .hover-card {
-  width: 96.4%;
+  width: 97%;
   background-color: white;
   position: relative;
   bottom: 50px;
@@ -449,29 +368,80 @@ ol {
   }
 }
 
-.fa-heart {
+@keyframes fadeInHeart {
+  0% {
+    opacity: 100%;
+  }
+  25% {
+    opacity: 75%;
+  }
+  50% {
+    opacity: 50%;
+  }
+  75% {
+    opacity: 25%;
+  }
+  100% {
+    opacity: 0%;
+  }
+}
+.full-heart {
   position: relative;
-  left: 600px;
+  left: 784px;
   bottom: 58px;
   font-size: 32px;
-  color: #848484;
+  background: -webkit-linear-gradient(top, #9356DC, #FF79DA);
+  -webkit-background-clip: text;
+  color: transparent;
 }
 @media screen and (max-width: 768px) {
-  .fa-heart {
+  .full-heart {
     left: 252px;
     bottom: 30px;
     font-size: 29px;
   }
 }
 @media screen and (min-width: 769px) and (max-width: 992px) {
-  .fa-heart {
+  .full-heart {
     left: 303px;
     bottom: 30px;
     font-size: 29px;
   }
 }
 
-footer {
+.empty-heart {
+  position: relative;
+  left: 748px;
+  bottom: 58px;
+  font-size: 32px;
+  color: black;
+  background-color: #ffffff;
+}
+.empty-heart:hover {
+  animation: fadeInHeart 100ms linear forwards;
+}
+@media screen and (max-width: 768px) {
+  .empty-heart {
+    left: 219px;
+    bottom: 30px;
+    font-size: 29px;
+  }
+  .empty-heart:active {
+    animation: fadeInHeart 100ms linear forwards;
+  }
+}
+@media screen and (min-width: 769px) and (max-width: 992px) {
+  .empty-heart {
+    left: 270px;
+    bottom: 30px;
+    font-size: 29px;
+  }
+  .empty-heart:active {
+    animation: fadeInHeart 100ms linear forwards;
+  }
+}
+
+.homepage-footer {
   background-color: #2a2a2a;
   padding-left: 35px;
   padding-top: 20px;
@@ -479,13 +449,13 @@ footer {
   color: #ffffff;
 }
 @media screen and (max-width: 768px) {
-  footer {
+  .homepage-footer {
     padding-bottom: 25px;
     padding-top: 15px;
   }
 }
 @media screen and (min-width: 769px) and (max-width: 992px) {
-  footer {
+  .homepage-footer {
     background-color: #2a2a2a;
     padding-left: 35px;
     padding-top: 20px;
@@ -493,32 +463,32 @@ footer {
     color: #ffffff;
   }
 }
-footer h1 {
+.homepage-footer__heading {
   font-family: "Shrikhand", cursive;
   padding-bottom: 20px;
 }
 @media screen and (max-width: 768px) {
-  footer h1 {
+  .homepage-footer__heading {
     font-size: 25px;
     padding-bottom: 7px;
   }
 }
-footer p {
+.homepage-footer p {
   font-family: "Roboto", sans-serif, Arial, Helvetica;
   font-weight: 400;
   font-size: 26px;
 }
 @media screen and (max-width: 768px) {
-  footer p {
+  .homepage-footer p {
     font-size: 15px;
   }
 }
-footer i {
+.homepage-footer i {
   margin-right: 10px;
   font-size: 24px;
 }
 @media screen and (max-width: 768px) {
-  footer i {
+  .homepage-footer i {
     font-size: 21px;
   }
 }
@@ -540,6 +510,379 @@ footer .fa-handshake-angle {
 @media screen and (max-width: 768px) {
   footer .fa-handshake-angle {
     font-size: 17px;
+  }
+}
+
+/*j'ai essayé d'ajouter 'forwards' pour animation après 'ease-out', mais rien n'a changé, j'ai l'impression. 
+Par contre, les transitions de 'add-btn' et de 'Price' semblent être maintenue après la clique de la souris - Version PC et Mobile. 
+Pourtant la transition de 'Price' pour la version Tablette ne marche pas comme je veux, j'ai testé beaucoup de choses, 
+mais le problème est toujours là.*/
+@keyframes fadeIn {
+  0% {
+    transform: translateY(30%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+body {
+  margin: auto;
+  width: 100%;
+  font-family: "Roboto", sans-serif, Arial, Helvetica;
+}
+@media screen and (max-width: 768px) {
+  body {
+    min-width: 379px;
+  }
+}
+
+.menu-main {
+  margin-bottom: -129px;
+}
+@media screen and (max-width: 768px) {
+  .menu-main {
+    margin-bottom: -45px;
+  }
+}
+
+.menu-header {
+  display: flex;
+  align-items: center;
+}
+.menu-header .fa-arrow-left {
+  font-size: 20px;
+  padding-left: 30px;
+  color: black;
+}
+.menu-header__logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+@media screen and (max-width: 768px) {
+  .menu-header__logo {
+    width: 44%;
+    height: auto;
+    margin-left: 57px;
+  }
+}
+
+.top-image img {
+  width: 100%;
+}
+
+.menu {
+  background-color: #f7f5f5;
+  border-radius: 25px 25px 0 0;
+  position: relative;
+  top: -130px;
+  padding: 12px 13px 50px 13px;
+}
+@media screen and (max-width: 768px) {
+  .menu {
+    top: -45px;
+    padding: 12px 13px 61px 13px;
+  }
+}
+.menu__heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media screen and (max-width: 768px) {
+  .menu__heading {
+    justify-content: flex-start;
+  }
+}
+.menu__heading h1 {
+  font-family: "Shrikhand", cursive;
+  font-size: 45px;
+}
+@media screen and (max-width: 768px) {
+  .menu__heading h1 {
+    font-size: 26px;
+  }
+}
+.menu__heading .fa-heart {
+  position: relative;
+  top: -2px;
+  left: 21px;
+  font-size: 39px;
+}
+@media screen and (max-width: 768px) {
+  .menu__heading .fa-heart {
+    font-size: 26px;
+    left: 125px;
+  }
+}
+.menu__lists {
+  display: flex;
+  justify-content: space-evenly;
+}
+@media screen and (min-width: 769px) and (max-width: 992px) {
+  .menu__lists {
+    flex-direction: column;
+    row-gap: 1em;
+  }
+}
+@media screen and (max-width: 768px) {
+  .menu__lists {
+    flex-direction: column;
+    row-gap: 1em;
+  }
+}
+.menu__lists--choice {
+  background-color: white;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 0px 23px 0px 10px;
+  column-gap: 3.1em;
+  margin-bottom: 10px;
+  box-shadow: 5px 5px 6px #e2e2e2;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  animation: fadeIn 900ms ease-in-out both;
+}
+.menu__lists--choice--1 {
+  animation-delay: 200ms;
+}
+.menu__lists--choice--2 {
+  animation-delay: 400ms;
+}
+.menu__lists--choice:hover .choice__add-btn {
+  transform: translate(0%);
+}
+.menu__lists--choice:hover .choice__add-btn i {
+  transform: rotate(0deg);
+}
+.menu__lists--choice:hover .choice-name {
+  width: 55%;
+}
+.menu__lists--choice:hover .choice-price {
+  transform: translate(-250%);
+}
+@media screen and (max-width: 768px) {
+  .menu__lists--choice {
+    column-gap: 0;
+    margin-bottom: 15px;
+  }
+}
+@media screen and (min-width: 769px) and (max-width: 992px) {
+  .menu__lists--choice:active .choice__add-btn {
+    transform: translate(0%);
+  }
+  .menu__lists--choice:active .choice__add-btn i {
+    transform: rotate(0deg);
+  }
+  .menu__lists--choice:active .choice-name {
+    width: 55%;
+  }
+  .menu__lists--choice:active .choice-price {
+    transform: translate(-250%);
+    /*J'ai pas réussi à régler ce problème ! Le prix glisse vers la droite si je relache la souris.
+    Il semble qu'il s'agit du problème de 'maintenir la transition après la clique de la souris, c'est ce que 
+    j'ai pas trouvé comme solution.*/
+  }
+}
+@media screen and (max-width: 768px) {
+  .menu__lists--choice:active .choice__add-btn {
+    transform: translate(0%);
+  }
+  .menu__lists--choice:active .choice__add-btn i {
+    transform: rotate(0deg);
+  }
+  .menu__lists--choice:active .choice-name {
+    width: 55%;
+  }
+  .menu__lists--choice:active .choice-price {
+    transform: translate(-250%);
+  }
+}
+.menu__lists--choice .choice-name {
+  display: inline-block;
+  white-space: nowrap;
+  transition: all 300ms ease-out;
+}
+.menu__lists--choice .choice-name__title {
+  margin-bottom: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@media screen and (min-width: 769px) and (max-width: 992px) {
+  .menu__lists--choice .choice-name__title {
+    font-size: 27px;
+  }
+}
+.menu__lists--choice .choice-name__accompagnement {
+  font-weight: 300;
+  margin-top: 7px;
+  font-size: 15.2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@media screen and (min-width: 769px) and (max-width: 992px) {
+  .menu__lists--choice .choice-name__accompagnement {
+    font-size: 22px;
+  }
+}
+.menu__lists--choice .choice-price {
+  font-weight: 900;
+  font-size: 16px;
+  transform: translate(0);
+  transition: all 300ms ease-out;
+  /*transition-delay: 30ms;*/
+}
+@media screen and (min-width: 769px) and (max-width: 992px) {
+  .menu__lists--choice .choice-price {
+    font-size: 22px;
+  }
+}
+.menu__lists--choice .choice__add-btn {
+  min-width: 20%;
+  height: 100%;
+  background-color: #99E2D0;
+  font-size: 22px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  transform: translate(100%);
+  transition: all 300ms ease-out;
+}
+.menu__lists--choice .choice__add-btn i {
+  transform: rotate(-360deg);
+  transition: all 300ms ease-out;
+}
+.menu__lists h2 {
+  font-weight: 300;
+}
+@media screen and (min-width: 769px) and (max-width: 992px) {
+  .menu__lists h2 {
+    font-size: 24px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .menu__lists h2 {
+    font-size: 17px;
+  }
+}
+.menu__lists .underline {
+  width: 17%;
+  border-bottom: 3px solid #99E2D0;
+  padding-bottom: 7px;
+}
+@media screen and (min-width: 769px) and (max-width: 992px) {
+  .menu__lists .underline {
+    width: 8%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .menu__lists .underline {
+    width: 12%;
+  }
+}
+.menu button {
+  margin-bottom: 35px;
+  border: none;
+  border-radius: 35px;
+  box-shadow: 5px 5px 6px #e2e2e2;
+  background: linear-gradient(to bottom, #FF79DA, #9356DC);
+  padding: 15px 52px;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 43px;
+}
+.menu button:active {
+  filter: brightness(1.2);
+  box-shadow: 9px 9px 13px #A7A7A7;
+}
+@media screen and (max-width: 768px) {
+  .menu button {
+    margin-top: 37px;
+    font-size: 17px;
+  }
+}
+
+.menu-footer {
+  background-color: #2a2a2a;
+  padding-left: 35px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  color: #ffffff;
+  font-size: 14px;
+}
+@media screen and (max-width: 768px) {
+  .menu-footer {
+    padding-bottom: 25px;
+    padding-top: 15px;
+  }
+}
+@media screen and (min-width: 769px) and (max-width: 992px) {
+  .menu-footer {
+    background-color: #2a2a2a;
+    padding-left: 35px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #ffffff;
+  }
+}
+.menu-footer__heading {
+  font-family: "Shrikhand", cursive;
+}
+@media screen and (max-width: 768px) {
+  .menu-footer__heading {
+    font-size: 20px;
+    padding-bottom: 7px;
+  }
+}
+.menu-footer p {
+  font-weight: 300;
+  font-size: 26px;
+}
+@media screen and (max-width: 768px) {
+  .menu-footer p {
+    font-size: 17px;
+  }
+}
+.menu-footer i {
+  margin-right: 10px;
+  font-size: 24px;
+}
+@media screen and (max-width: 768px) {
+  .menu-footer i {
+    font-size: 21px;
+  }
+}
+.menu-footer .fa-utensils {
+  margin-right: 10px;
+  font-size: 24px;
+}
+@media screen and (max-width: 768px) {
+  .menu-footer .fa-utensils {
+    font-size: 17px;
+  }
+}
+.menu-footer .fa-handshake-angle {
+  margin-right: 7px;
+  font-size: 20px;
+}
+@media screen and (max-width: 768px) {
+  .menu-footer .fa-handshake-angle {
+    font-size: 14px;
   }
 }
 
