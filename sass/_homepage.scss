@@ -52,7 +52,15 @@ $breakpoints: (
     }
 }
 
+body {
+    margin: auto;
+    width: 100%;
+    font-family: 'Roboto', sans-serif, Arial, Helvetica;
 
+    @include mobile-only {
+        min-width: 379px;
+    }
+}
 
 .loader {
     position: fixed;
@@ -507,5 +515,30 @@ form input::-webkit-input-placeholder {
         @include mobile-only {
             font-size: 15px;
         }
+    }
+}
+
+.email {
+    color: white;
+    text-decoration: none;
+}
+
+footer i {
+    margin-right: 10px;
+    font-size: 24px;
+}
+
+.fa-utensils {   
+    @include mobile-only {
+        font-size: 17px;
+    }
+}
+
+.fa-handshake-angle {
+    margin-right: 7px;
+    font-size: 20px;
+
+    @include mobile-only {
+        font-size: 15px;
     }
 }
