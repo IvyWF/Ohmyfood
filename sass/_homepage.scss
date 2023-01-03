@@ -4,7 +4,13 @@ $colorprimary: #9356DC;
 $colorsecondary: #FF79DA;
 $colortertiary: #99E2D0;
 $colorfooter: #2a2a2a;
+
 $button-shadow: 9px 9px 13px #A7A7A7;
+$choice-shadow: 5px 5px 6px $darkergrey; //for menu page
+
+$loading-duration: 1.5s; //for homepage
+$smooth-choice-transition: all 300ms ease-out; 
+$delay-between-choice: 200ms;
 
 $breakpoints: (
     mobile: 768px,
@@ -25,7 +31,7 @@ $breakpoints: (
 
 
 
-@keyframes fadeOut {
+@keyframes hideLoader {
     0% {
         opacity: 1;
     }
@@ -39,44 +45,40 @@ $breakpoints: (
 @keyframes loading {
     from {
         transform: rotate(0turn);
-        /*opacity: 1;*/
     }
 
     to {
         transform: rotate(1turn);
-        /*opacity: 0;
-        visibility: hidden;*/
     }
 }
 
-.loader {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: #fff;
-    z-index: 1;
 
-    &__round {
+
+.loader {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    z-index: 999;
+
+    &::after {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto;
         width: 75px;
         height: 75px;
         border: 15px solid $lightgrey;
         border-top-color: $colorprimary;
         border-radius: 50%;
-        animation: loading 1.5s ease;
+        animation: loading $loading-duration ease;
     }
-}
 
-body {
-    margin: auto;
-    width: 100%;
-
-    @include mobile-only {
-        min-width: 379px;
+    & {
+        animation: hideLoader 0.15s $loading-duration forwards;
     }
 }
 
@@ -275,7 +277,6 @@ form input::-webkit-input-placeholder {
 }
 
 .restaurants {
-    font-family: 'Roboto', sans-serif, Arial, Helvetica;
     background-color: $lightgrey;
     margin-top: 50px;
 
@@ -299,6 +300,7 @@ form input::-webkit-input-placeholder {
         column-count: 2;
         margin-left: 25px;
         margin-right: 25px;
+        gap: 25px;
 
         @include mobile-only {
             column-count: 1;
@@ -307,176 +309,163 @@ form input::-webkit-input-placeholder {
 }
 
 .restaurants__list-card .card {
-    margin-block-start: 0;
-    margin-block-end: 0;
-    margin-inline-start: 0;
-    margin-inline-end: 0;
+    margin-block-end: 39px;
 
-    & img {
-        border-radius: 20px 20px 0 0;
-        width: 100%;
-    }
-
-    & a {
+    & .restaurants-card {
         text-decoration: none;
         color: black;
-    }
-}
+        display: grid;
+        grid: "a a" 260px "b c" 1fr / 1fr max-content;
+        align-items: center;
 
-.new {
-    float: right;
-    position: relative;
-    bottom: 500px;
-    right: 15px;
-    background-color: #99E2D0;
-    border-radius: 5px;
-    color: #2d6255;
-    font-size: 23px;
-    padding: 12px 20px;
-
-    @include mobile-only {
-        bottom: 183px;
-        font-size: 17px;
-        padding: 10px 17px;
-    }
-
-    @include tablet-only {
-        bottom: 210px;
-        font-size: 19px;
-    }
-}
-
-.restaurants__list-card .card .hover-card {
-    width: 97%;
-    background-color: white;
-    position: relative;
-    bottom: 50px;
-    border-radius: 0px 0px 20px 20px;
-    box-shadow:  5px 5px 15px rgba(170, 170, 170, 0.452);
-    padding-top: 10px;
-    padding-left: 28px;
-
-    @include mobile-only {
-        width: 95%;
-        bottom: 28px;
-        padding-top: 0px;
-        padding-left: 16px
-    }
-
-    @include tablet-only {
-        width: 96%;
-        bottom: 28px;
-        padding-top: 5px;
-        padding-left: 16px
-    }
-
-    & h2 {
-        font-size: 29px;
-        margin-bottom: 10px;
-
-        @include mobile-only {
-            font-size: 19px;
-            margin-bottom: 10px;
-            padding-top: 17px;
-        }
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0px 4px 15px 0px rgba(170, 170, 170, 0.452);
 
         @include tablet-only {
-            font-size: 19px;
-            margin-bottom: 10px;
+            grid: "a a" 206px "b c" 1fr / 1fr max-content;
         }
-    }
-
-    & p {
-        font-size: 26px;
-        font-weight: 100;
-        margin-block-start: 0;
-        margin-block-end: 0;
 
         @include mobile-only {
-            font-size: 17px;
-            margin-bottom: -15px;
+            grid: "a a" 173px "b c" 1fr / 1fr max-content;
         }
 
-        @include tablet-only {
-            font-size: 17px;
-            margin-bottom: -15px;
+        & img {
+            width: 100%;
+            height: 100%;
+            grid-area: a;
+            object-fit: cover;
         }
+
+        &__new {
+            grid-area: a;
+            place-self: start end;
+            margin: 13px;
+            padding: 12px 20px;
+            border-radius: 3px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #2e9178;
+            background-color: $colortertiary;
+            box-shadow: 5px 5px 15px rgba(170, 170, 170, 0.452); /* 0px 2px 4px 0px #00000026*/
+
+            @include mobile-only {
+                padding: 8px 16px;
+            }
+        }
+
+        &__text {
+            grid-area: b;
+            padding: 16px 20px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+
+            @include mobile-only {
+                padding: 9px 15px;
+            }
+
+            & h2 {
+                font-size: 27px;
+                margin-bottom: 10px;
+                margin-top: 6px;
+        
+                @include mobile-only {
+                    font-size: 19px;
+                }
+        
+                @include tablet-only {
+                    font-size: 21px;
+                }
+            }
+        
+            & p {
+                font-size: 24px;
+                font-weight: 100;
+                margin-block-start: 0;
+                margin-block-end: 0;
+        
+                @include mobile-only {
+                    font-size: 18px;
+                }
+        
+                @include tablet-only {
+                    font-size: 20px;
+                }
+            }
+        }
+
+        &__like {
+            grid-area: c;
+            margin: 0 37px 0 0;
+
+            @include mobile-only {
+                margin: 0 28px 0 0;
+            }
+        } 
     }
 }
 
-@keyframes fadeInHeart {
-    0% {
-        opacity: 100%;    
-    }
-
-    25% {
-        opacity: 75%;
-    }
-
-    50% {
-        opacity: 50%;
-    }
-
-    75% {
-        opacity: 25%;
-    }
-
-    100% {
-        opacity: 0%;
-    }
-}
-
-.full-heart {
+.btn-like {
     position: relative;
-    left: 784px;
-    bottom: 58px;
-    font-size: 32px;  
-    background: -webkit-linear-gradient(top, $colorprimary, $colorsecondary);
-    -webkit-background-clip: text;
-    color: transparent;
-
-    @include mobile-only {
-        left: 252px;
-        bottom: 30px;
-        font-size: 29px;
-    }
-
-    @include tablet-only {
-        left: 303px;
-        bottom: 30px;
-        font-size: 29px;
-    }
-}
-
-.empty-heart {
-    position: relative;
-    left: 748px;
-    bottom: 58px;
+    width: 21px;
+    height: 21px;
     font-size: 32px;
-    color: black;
-    background-color: #ffffff;
-    
-    &:hover {
-        animation: fadeInHeart 100ms linear forwards;
+
+    & .empty-heart, & .filled-heart {
+        position: absolute; // superposition (display: casse les anims)
+        top: 0;
+        left: 0;
+
+        transition-duration: 250ms;
     }
 
-    @include mobile-only {
-        left: 219px;
-        bottom: 30px;
-        font-size: 29px;
+    & .empty-heart {
+        opacity: 1;
+        transition-property: opacity;
+    }
 
-        &:active {
-            animation: fadeInHeart 100ms linear forwards;
+    & .filled-heart {
+        background: -webkit-linear-gradient(top, $colorprimary, $colorsecondary);
+        -webkit-background-clip: text;
+        color: transparent;
+
+        transform: scale(0);
+        transition-property: transform;
+    }
+
+    &:hover {
+        & .empty-heart {
+            opacity: 0;
+        }
+
+        & .filled-heart {
+            transform: scale(1);
         }
     }
 
-    @include tablet-only {
-        left: 270px;
-        bottom: 30px;
-        font-size: 29px;
+    @include mobile-only {
+        font-size: 27px;
 
         &:active {
-            animation: fadeInHeart 100ms linear forwards;
+            & .empty-heart {
+                opacity: 0;
+            }
+    
+            & .filled-heart {
+                transform: scale(1);
+            }
+        }
+    }
+    
+    @include tablet-only {
+        &:active {
+            & .empty-heart {
+                opacity: 0;
+            }
+    
+            & .filled-heart {
+                transform: scale(1);
+            }
         }
     }
 }
@@ -512,39 +501,11 @@ form input::-webkit-input-placeholder {
     }
 
     & p {
-        font-family: 'Roboto', sans-serif, Arial, Helvetica;
         font-weight: 400;
         font-size: 26px;
         
         @include mobile-only {
             font-size: 15px;
         }
-    }
-
-    & i {
-        margin-right: 10px;
-        font-size: 24px;
-        
-        @include mobile-only {
-            font-size: 21px;
-        }
-    }
-}
-
-footer .fa-utensils {
-    margin-right: 10px;
-    font-size: 24px;
-
-    @include mobile-only {
-        font-size: 21px;
-    }
-}
-
-footer .fa-handshake-angle {
-    margin-right: 7px;
-    font-size: 20px;
-
-    @include mobile-only {
-        font-size: 17px;
     }
 }

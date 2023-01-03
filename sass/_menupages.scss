@@ -4,10 +4,14 @@ $colorprimary: #9356DC;
 $colorsecondary: #FF79DA;
 $colortertiary: #99E2D0;
 $colorfooter: #2a2a2a;
-$choice-shadow: 5px 5px 6px $darkergrey;
-$button-shadow: 9px 9px 13px #A7A7A7;
 
-// responsive
+$button-shadow: 9px 9px 13px #A7A7A7;
+$choice-shadow: 5px 5px 6px $darkergrey; //for menu page
+
+$loading-duration: 1.5s; //for homepage
+$smooth-choice-transition: all 300ms ease-out; 
+$delay-between-choice: 200ms;
+
 $breakpoints: (
     mobile: 768px,
     tablet: 992px
@@ -25,14 +29,6 @@ $breakpoints: (
     }
 }
 
-// Animations
-$smooth-choice-transition: all 300ms ease-out; 
-/*j'ai essayé d'ajouter 'forwards' pour animation après 'ease-out', mais rien n'a changé, j'ai l'impression. 
-Par contre, les transitions de 'add-btn' et de 'Price' semblent être maintenue après la clique de la souris - Version PC et Mobile. 
-Pourtant la transition de 'Price' pour la version Tablette ne marche pas comme je veux, j'ai testé beaucoup de choses, 
-mais le problème est toujours là.*/
-$delay-between-choice: 200ms;
-
 @keyframes fadeIn {
     0% {
         transform: translateY(30%);
@@ -42,17 +38,6 @@ $delay-between-choice: 200ms;
     100% {
         transform: translateY(0%);
         opacity: 1;
-    }
-}
-
-
-body {
-    margin: auto;
-    width: 100%;
-    font-family: 'Roboto', sans-serif, Arial, Helvetica;
-
-    @include mobile-only {
-        min-width: 379px;
     }
 }
 
@@ -176,7 +161,7 @@ body {
             }
 
             &--3 {
-                animation-delay: $delay-between-choice*4;
+                animation-delay: $delay-between-choice*3;
             }
             
             &:hover {
@@ -200,6 +185,24 @@ body {
             @include mobile-only {
                 column-gap: 0;
                 margin-bottom: 15px;
+                
+                &:active {
+                    & .choice__add-btn {
+                        transform: translate(0%);
+    
+                        & i {
+                            transform: rotate(0deg);
+                        }
+                    }
+    
+                    & .choice-name {
+                        width: 55%;
+                    }
+                 
+                    & .choice-price {
+                        transform: translate(-250%); 
+                    }
+                }
             }
 
             @include tablet-only {
@@ -218,29 +221,6 @@ body {
                  
                     & .choice-price {
                         transform: translate(-250%); 
-                        /*J'ai pas réussi à régler ce problème ! Le prix glisse vers la droite si je relache la souris.
-                        Il semble qu'il s'agit du problème de 'maintenir la transition après la clique de la souris, c'est ce que 
-                        j'ai pas trouvé comme solution.*/
-                    }
-                }
-            }
-
-            @include mobile-only {
-                &:active {
-                    & .choice__add-btn {
-                        transform: translate(0%);
-    
-                        & i {
-                            transform: rotate(0deg);
-                        }
-                    }
-    
-                    & .choice-name {
-                        width: 55%;
-                    }
-                 
-                    & .choice-price {
-                        transform: translate(-250%);
                     }
                 }
             }
@@ -301,6 +281,10 @@ body {
                 right:0px;
                 transform: translate(100%);
                 transition: $smooth-choice-transition;
+
+                @include tablet-only {
+                    min-width: 11%;
+                }
 
                 & i {
                     transform: rotate(-360deg);
@@ -400,33 +384,6 @@ body {
         
         @include mobile-only {
             font-size: 17px;
-        }
-    }
-
-    & i {
-        margin-right: 10px;
-        font-size: 24px;
-        
-        @include mobile-only {
-            font-size: 21px;
-        }
-    }
-
-    & .fa-utensils {
-        margin-right: 10px;
-        font-size: 24px;
-    
-        @include mobile-only {
-            font-size: 17px;
-        }
-    }
-
-    & .fa-handshake-angle {
-        margin-right: 7px;
-        font-size: 20px;
-    
-        @include mobile-only {
-            font-size: 14px;
         }
     }
 }
