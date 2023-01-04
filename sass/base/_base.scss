@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Shrikhand&display=swap');
+/*font-family: 'Shrikhand', cursive;*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+/*font-family: 'Roboto', sans-serif;*/
+
+body {
+    margin: auto;
+    width: 100%;
+    font-family: 'Roboto', sans-serif, Arial, Helvetica;
+
+    @include mobile-only {
+        min-width: 379px;
+    }
+}

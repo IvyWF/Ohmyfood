@@ -1,0 +1,78 @@
+button {
+    margin-bottom: 35px;
+    border: none;
+    border-radius: 35px;
+    box-shadow: $choice-shadow;
+    color: white;
+    cursor: pointer;
+
+    &:active {
+        filter: brightness(1.2);
+        box-shadow: $button-shadow;
+    }
+}
+
+.btn-like {
+    position: relative;
+    width: 21px;
+    height: 21px;
+    font-size: 32px;
+
+    & .empty-heart, & .filled-heart {
+        position: absolute; // superposition (display: casse les anims)
+        top: 0;
+        left: 0;
+
+        transition-duration: 250ms;
+    }
+
+    & .empty-heart {
+        opacity: 1;
+        transition-property: opacity;
+    }
+
+    & .filled-heart {
+        background: -webkit-linear-gradient(top, $colorprimary, $colorsecondary);
+        -webkit-background-clip: text;
+        color: transparent;
+
+        transform: scale(0);
+        transition-property: transform;
+    }
+
+    &:hover {
+        & .empty-heart {
+            opacity: 0;
+        }
+
+        & .filled-heart {
+            transform: scale(1);
+        }
+    }
+
+    @include mobile-only {
+        font-size: 27px;
+
+        &:active {
+            & .empty-heart {
+                opacity: 0;
+            }
+    
+            & .filled-heart {
+                transform: scale(1);
+            }
+        }
+    }
+    
+    @include tablet-only {
+        &:active {
+            & .empty-heart {
+                opacity: 0;
+            }
+    
+            & .filled-heart {
+                transform: scale(1);
+            }
+        }
+    }
+}

@@ -1,0 +1,24 @@
+.email {
+    color: white;
+    text-decoration: none;
+}
+
+footer i {
+    margin-right: 10px;
+    font-size: 24px;
+}
+
+.fa-utensils {   
+    @include mobile-only {
+        font-size: 17px;
+    }
+}
+
+.fa-handshake-angle {
+    margin-right: 7px;
+    font-size: 20px;
+
+    @include mobile-only {
+        font-size: 15px;
+    }
+}

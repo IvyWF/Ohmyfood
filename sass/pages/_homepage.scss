@@ -1,3 +1,4 @@
+/*
 $lightgrey: #f7f5f5;
 $darkergrey: #e2e2e2;
 $colorprimary: #9356DC;
@@ -15,9 +16,9 @@ $delay-between-choice: 200ms;
 $breakpoints: (
     mobile: 768px,
     tablet: 992px
-);
+);*/
 
-@mixin mobile-only {
+/*@mixin mobile-only {
     @media screen and (max-width: map-get($breakpoints, mobile)) {
         @content;
     }
@@ -27,7 +28,7 @@ $breakpoints: (
     @media screen and (min-width: 769px) and (max-width: map-get($breakpoints, tablet)) {
         @content;
     }
-}
+}*/
 
 
 
@@ -49,16 +50,6 @@ $breakpoints: (
 
     to {
         transform: rotate(1turn);
-    }
-}
-
-body {
-    margin: auto;
-    width: 100%;
-    font-family: 'Roboto', sans-serif, Arial, Helvetica;
-
-    @include mobile-only {
-        min-width: 379px;
     }
 }
 
@@ -172,20 +163,20 @@ form input::-webkit-input-placeholder {
     }
 
     & button {
-        margin-bottom: 35px;
+        /*margin-bottom: 35px;
         border: none;
         border-radius: 35px;
-        box-shadow: 6px 6px 6px $lightgrey;
+        box-shadow: $choice-shadow;*/
         background: linear-gradient(to right, $colorsecondary, $colorprimary);
         padding: 15px;
-        color: white;
+        /*color: white;*/
         font-size: 18px;
-        cursor: pointer;
+        /*cursor: pointer;*/
 
-        &:active {
+        /*&:active {
             filter: brightness(1.2);
             box-shadow: $button-shadow;
-        }
+        }*/
 
         @include mobile-only {
             margin-bottom: 50px;
@@ -413,7 +404,7 @@ form input::-webkit-input-placeholder {
     }
 }
 
-.btn-like {
+/*.btn-like {
     position: relative;
     width: 21px;
     height: 21px;
@@ -476,7 +467,7 @@ form input::-webkit-input-placeholder {
             }
         }
     }
-}
+}/*
 
 .homepage-footer {
     background-color: $colorfooter;
@@ -518,7 +509,7 @@ form input::-webkit-input-placeholder {
     }
 }
 
-.email {
+/*.email {
     color: white;
     text-decoration: none;
 }
@@ -542,3 +533,13 @@ footer i {
         font-size: 15px;
     }
 }
+
+body {
+    margin: auto;
+    width: 100%;
+    font-family: 'Roboto', sans-serif, Arial, Helvetica;
+
+    @include mobile-only {
+        min-width: 379px;
+    }
+}*/

@@ -1,4 +1,4 @@
-$lightgrey: #f7f5f5;
+/*$lightgrey: #f7f5f5;
 $darkergrey: #e2e2e2;
 $colorprimary: #9356DC;
 $colorsecondary: #FF79DA;
@@ -27,7 +27,7 @@ $breakpoints: (
     @media screen and (min-width: 769px) and (max-width: map-get($breakpoints, tablet)) {
         @content;
     }
-}
+}*/
 
 @keyframes fadeIn {
     0% {
@@ -38,16 +38,6 @@ $breakpoints: (
     100% {
         transform: translateY(0%);
         opacity: 1;
-    }
-}
-
-body {
-    margin: auto;
-    width: 100%;
-    font-family: 'Roboto', sans-serif, Arial, Helvetica;
-
-    @include mobile-only {
-        min-width: 379px;
     }
 }
 
@@ -332,24 +322,24 @@ body {
     }
 
     & button {
-        margin-bottom: 35px;
+        /*margin-bottom: 35px;
         border: none;
         border-radius: 35px;
-        box-shadow: $choice-shadow;
+        box-shadow: $choice-shadow;*/
         background: linear-gradient(to bottom, $colorsecondary, $colorprimary);
         padding: 15px 52px;
-        color: white;
+        /*color: white;*/
         font-size: 20px;
-        cursor: pointer;
+        /*cursor: pointer;*/
         display: block;
         margin-left: auto;
         margin-right: auto;
         margin-top: 43px;
 
-        &:active {
+        /*&:active {
             filter: brightness(1.2);
             box-shadow: $button-shadow;
-        }
+        }*/
 
         @include mobile-only {
             margin-top: 37px;
@@ -398,7 +388,7 @@ body {
     }
 }
 
-.email {
+/*.email {
     color: white;
     text-decoration: none;
 }
@@ -422,3 +412,13 @@ footer i {
         font-size: 15px;
     }
 }
+
+body {
+    margin: auto;
+    width: 100%;
+    font-family: 'Roboto', sans-serif, Arial, Helvetica;
+
+    @include mobile-only {
+        min-width: 379px;
+    }
+}*/
