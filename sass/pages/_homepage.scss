@@ -404,6 +404,47 @@ form input::-webkit-input-placeholder {
     }
 }
 
+.homepage-footer {
+    background-color: $colorfooter;
+    padding-left: 35px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #ffffff;
+
+    @include mobile-only {
+        padding-bottom: 25px;
+        padding-top: 15px;
+    }
+
+    @include tablet-only {
+        background-color: $colorfooter;
+        padding-left: 35px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        color: #ffffff;
+    }
+
+    &__heading {
+        font-family: 'Shrikhand', cursive;
+        padding-bottom: 20px;
+
+        @include mobile-only {
+            font-size: 25px;
+            padding-bottom: 7px;
+        }
+    }
+
+    & p {
+        font-weight: 400;
+        font-size: 26px;
+        
+        @include mobile-only {
+            font-size: 15px;
+        }
+    }
+}
+
+
 /*.btn-like {
     position: relative;
     width: 21px;
@@ -469,45 +510,7 @@ form input::-webkit-input-placeholder {
     }
 }/*
 
-.homepage-footer {
-    background-color: $colorfooter;
-    padding-left: 35px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    color: #ffffff;
 
-    @include mobile-only {
-        padding-bottom: 25px;
-        padding-top: 15px;
-    }
-
-    @include tablet-only {
-        background-color: $colorfooter;
-        padding-left: 35px;
-        padding-top: 20px;
-        padding-bottom: 20px;
-        color: #ffffff;
-    }
-
-    &__heading {
-        font-family: 'Shrikhand', cursive;
-        padding-bottom: 20px;
-
-        @include mobile-only {
-            font-size: 25px;
-            padding-bottom: 7px;
-        }
-    }
-
-    & p {
-        font-weight: 400;
-        font-size: 26px;
-        
-        @include mobile-only {
-            font-size: 15px;
-        }
-    }
-}
 
 /*.email {
     color: white;

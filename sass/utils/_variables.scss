@@ -1,3 +1,4 @@
+//Colors
 $lightgrey: #f7f5f5;
 $darkergrey: #e2e2e2;
 $colorprimary: #9356DC;
@@ -5,14 +6,17 @@ $colorsecondary: #FF79DA;
 $colortertiary: #99E2D0;
 $colorfooter: #2a2a2a;
 
+//Button shadow
 $button-shadow: 9px 9px 13px #A7A7A7;
 $choice-shadow: 5px 5px 6px $darkergrey; //for menu page
 
+//Animation and Transition
 $loading-duration: 1.5s; //for homepage
 $smooth-choice-transition: all 300ms ease-out; 
 $delay-between-choice: 200ms;
 
+//Responsive
 $breakpoints: (
-    mobile: 768px,
+    mobile: 767px,
     tablet: 992px
 );
