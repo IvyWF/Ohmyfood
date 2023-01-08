@@ -1,0 +1,32 @@
+.heart-enchantee {
+    position: relative;
+    top: -2px;
+    left: 21px;
+    font-size: 39px;
+
+    @include mobile-only {
+        font-size: 26px;
+        left: 53px;
+    }
+}
+
+.enchantee-top-image {
+    height: 836px;
+
+    @include tablet-only {
+        height: 437px;
+    }
+
+    @include mobile-only {
+        height: 290px;
+    }
+
+    & img {
+        object-fit: cover;
+        height: 100%;
+
+        @include mobile-only {
+            width: 100%;
+        }
+    }
+}
