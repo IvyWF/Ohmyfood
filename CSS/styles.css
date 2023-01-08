@@ -576,18 +576,7 @@ form input::-webkit-input-placeholder {
 @media screen and (max-width: 767px) {
   .menu__heading h2 {
     font-size: 26px;
-  }
-}
-.menu__heading .fa-heart {
-  position: relative;
-  top: -2px;
-  left: 21px;
-  font-size: 39px;
-}
-@media screen and (max-width: 767px) {
-  .menu__heading .fa-heart {
-    font-size: 26px;
-    left: 125px;
+    margin-left: 5px;
   }
 }
 .menu__lists {
@@ -834,7 +823,7 @@ form input::-webkit-input-placeholder {
 @media screen and (max-width: 767px) {
   .heart-francaise {
     font-size: 26px;
-    left: 125px;
+    left: 115px;
   }
 }
 
@@ -847,7 +836,30 @@ form input::-webkit-input-placeholder {
 @media screen and (max-width: 767px) {
   .heart-enchantee {
     font-size: 26px;
-    left: 52px;
+    left: 53px;
+  }
+}
+
+.enchantee-top-image {
+  height: 836px;
+}
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  .enchantee-top-image {
+    height: 437px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .enchantee-top-image {
+    height: 290px;
+  }
+}
+.enchantee-top-image img {
+  object-fit: cover;
+  height: 100%;
+}
+@media screen and (max-width: 767px) {
+  .enchantee-top-image img {
+    width: 100%;
   }
 }
 
@@ -860,7 +872,7 @@ form input::-webkit-input-placeholder {
 @media screen and (max-width: 767px) {
   .heart-palette {
     font-size: 26px;
-    left: 110px;
+    left: 59px;
   }
 }
 
@@ -873,7 +885,7 @@ form input::-webkit-input-placeholder {
 @media screen and (max-width: 767px) {
   .heart-delice {
     font-size: 26px;
-    left: 107px;
+    left: 64px;
   }
 }
 
