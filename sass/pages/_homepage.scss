@@ -223,8 +223,7 @@ form input::-webkit-input-placeholder {
                 transition: all 0.3s ease-out;
 
                 &:hover {
-                color: #9356DC;
-                transition: all 0.3s ease-out;
+                    color: #9356DC;
                 }
             }
         }
@@ -302,7 +301,7 @@ form input::-webkit-input-placeholder {
             font-weight: 500;
             color: #2e9178;
             background-color: $colortertiary;
-            box-shadow: 5px 5px 15px rgba(170, 170, 170, 0.452); /* 0px 2px 4px 0px #00000026*/
+            box-shadow: 5px 5px 15px rgba(170, 170, 170, 0.452); 
 
             @include mobile-only {
                 padding: 8px 16px;
