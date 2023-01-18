@@ -314,7 +314,6 @@ form input::-webkit-input-placeholder {
 }
 .steps-section__list--item:hover {
   background-color: #F5EDFF;
-  transition: all 0.3s ease-out;
 }
 .steps-section__list--item i {
   color: hsl(0deg, 0%, 25%);
@@ -325,7 +324,6 @@ form input::-webkit-input-placeholder {
 }
 .steps-section__list--item i:hover {
   color: #9356DC;
-  transition: all 0.3s ease-out;
 }
 
 .restaurants {
@@ -398,7 +396,7 @@ form input::-webkit-input-placeholder {
   font-weight: 500;
   color: #2e9178;
   background-color: #99E2D0;
-  box-shadow: 5px 5px 15px rgba(170, 170, 170, 0.452); /* 0px 2px 4px 0px #00000026*/
+  box-shadow: 5px 5px 15px rgba(170, 170, 170, 0.452);
 }
 @media screen and (max-width: 767px) {
   .restaurants__list-card .card .restaurants-card__new {
